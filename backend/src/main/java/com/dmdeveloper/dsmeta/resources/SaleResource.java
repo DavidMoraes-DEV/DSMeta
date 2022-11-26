@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dmdeveloper.dsmeta.DTO.SaleDTO;
 import com.dmdeveloper.dsmeta.services.SaleService;
+import com.dmdeveloper.dsmeta.services.SmsService;
 
 @RestController
 @RequestMapping(value = "/sales")
@@ -19,6 +20,9 @@ public class SaleResource {
 
 	@Autowired
 	private SaleService service;
+	
+	@Autowired
+	private SmsService smsService;
 	
 	@GetMapping
 	public ResponseEntity<Page<SaleDTO>> findSalesDate(
@@ -34,5 +38,10 @@ public class SaleResource {
 	public ResponseEntity<SaleDTO> findById(@PathVariable Long id) {
 		SaleDTO sale = service.findById(id);
 		return ResponseEntity.ok().body(sale);
+	}
+	
+	@GetMapping("/{id}/notification")
+	public void notifySms(@PathVariable Long id) {
+		smsService.sendSms(id);
 	}
 }

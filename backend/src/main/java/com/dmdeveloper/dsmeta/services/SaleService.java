@@ -1,6 +1,8 @@
 package com.dmdeveloper.dsmeta.services;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,12 @@ public class SaleService {
 	@Transactional(readOnly = true)
 	public Page<SaleDTO> findSalesDate(String minDate, String maxDate, Pageable pageable) {
 		
+		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+		
+		
 		Page<Sale> sales = repository.findSalesDate(
-				LocalDate.parse(minDate),
-				LocalDate.parse(maxDate),
+				minDate.equals("") ? today.minusDays(365) : LocalDate.parse(minDate),
+				maxDate.equals("") ? today : LocalDate.parse(maxDate),
 				pageable
 		);
 		
