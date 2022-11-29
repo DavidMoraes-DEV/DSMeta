@@ -3,9 +3,11 @@ import "./styles.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { BASE_URL } from "../../utils/request";
+import axios, { AxiosRequestConfig } from "axios";
+import { BASE_URL, requestBackend } from "../../utils/request";
 import { Sale } from "../../models/sale";
+import Pagination from "../Pagination";
+import { SpringPage } from "../../models/spring";
 
 function SalesCard() {
   const min = new Date(new Date().setDate(new Date().getDate() - 365));
@@ -14,17 +16,32 @@ function SalesCard() {
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
 
-  const [sales, setSales] = useState<Sale[]>([]);
+  const [page, setPage] = useState<SpringPage<Sale>>();
 
   useEffect(() => {
 
     const minimunDate = minDate.toISOString().slice(0, 10);
     const maximunDate = maxDate.toISOString().slice(0, 10);
-
-    axios.get(`${BASE_URL}/sales?minDate=${minimunDate}&maxDate=${maximunDate}`).then((response) => {
-      setSales(response.data.content);
-    });
+    getSales(0, minimunDate, maximunDate);
+    
   }, [minDate, maxDate]);
+  
+  const getSales = (pageNumber: number, minimunDate?: string, maximunDate?: string) => {
+    const config: AxiosRequestConfig = {
+      method: 'GET',
+      url: '/sales',
+      params: {
+        minDate: minimunDate,
+        maxDate: maximunDate,
+        page: pageNumber,
+        size: 10,
+      }
+    };
+
+    requestBackend(config).then((response) => {
+      setPage(response.data);
+    });
+  };
 
   return (
     <div className="dsmeta-card">
@@ -63,7 +80,7 @@ function SalesCard() {
           </thead>
 
           <tbody>
-            {sales.map((sale) => (
+            {page?.content.map((sale) => (
               <tr key={sale.id}>
                 <td className="show992">#{sale.id}</td>
                 <td className="show576">{new Date(sale.date).toLocaleDateString()}</td>
@@ -83,6 +100,13 @@ function SalesCard() {
           </tbody>
         </table>
       </div>
+
+      <Pagination
+        pageCount={(page) ? page.totalPages : 0}
+        range={3}
+        onChange={getSales}
+      />
+
     </div>
   );
 }
