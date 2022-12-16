@@ -18,13 +18,13 @@ para navegar e disponibilizar todas as vendas no período selecionado.
 
 ## Layout
 
-<img align="center" alt="Layouts DS Catalog" width="100%" src="https://raw.githubusercontent.com/DavidMoraes-DEV/assetsReadme/main/dsmeta/tela-ds-meta.png" />
+<img align="center" alt="Layouts DS Catalog" width="100%" src="https://raw.githubusercontent.com/DavidMoraes-DEV/ProjectsAssets/main/dsmeta/tela-ds-meta.png" />
 
 <br>
 
 ##  Design Original Completo:
 
-<a href="https://www.figma.com/file/EN1zFtk4eY3Jgmpgi9YaMG/DSMeta1?node-id=0%3A1"><img align="center" height="45" alt="DSSales" src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"></a>
+<a href="https://www.figma.com/file/EN1zFtk4eY3Jgmpgi9YaMG/DSMeta1?node-id=0%3A1"><img align="center" height="45" alt="DSMeta" src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"></a>
 
 <br>
 
@@ -35,7 +35,7 @@ para navegar e disponibilizar todas as vendas no período selecionado.
 <img align="center" alt="David-HTML5" height="30" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
 <img align="center" alt="David-CSS" height="30" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
 <img align="center" alt="David-TS" height="30" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
-<img align="center" alt="David-React" height="30" src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img align="center" alt="David-React" height="30" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
 <img align="center" alt="David-React-Components" height="30" src="https://img.shields.io/badge/Datepicker_/_Paginate_/_Toastify-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /><img align="center" alt="David-Axios" height="30" src="https://img.shields.io/badge/Axios-00000F?style=for-the-badge" />
 <img align="center" alt="David-Netlify" height="30" src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" />
 </div>
